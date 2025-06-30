@@ -10,7 +10,7 @@ WaitRx is a simple, powerful, and completely private digital Kanban board for yo
 
 Getting started with WaitRx is incredibly simple. No installation is required.
 
-1. Go to the [**Latest Release**](https://github.com/your-username/waitrx/releases) page.  
+1. Go to the [**Latest Release**](https://github.com/ARKVAULT-HEALTH/waitrx/releases) page.  
 2. Under the "Assets" section, download the WaitRx.html file.  
 3. Open the file in any modern web browser (like Chrome, Firefox, Edge, or Safari).
 
@@ -61,7 +61,7 @@ You can tailor WaitRx to your exact needs using the **Settings** menu (the gear 
 
 This is a project for the pharmacy community, by the pharmacy community. Your feedback and contributions are welcome\!
 
-* **Found a bug or have an idea?** Please [open an issue](https://github.com/your-username/waitrx/issues) and describe it in as much detail as possible.  
+* **Found a bug or have an idea?** Please [open an issue](https://github.com/ARKVAULT-HEALTH/waitrx/issues) and describe it in as much detail as possible.  
 * **Want to add a feature?** Fork the repository, make your changes, and submit a pull request.
 
 ## **📜 License**
