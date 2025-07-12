@@ -1,71 +1,95 @@
-# **WaitRx \- A Secure, Offline-First Prescription Queue**
+# CounterFlow mini: Now with TransfersRx, Problem Tracking, and More!
 
-For too long, pharmacy teams have relied on handwritten scraps of paper, sticky notes, and whiteboards to manage their priority prescription queue. This system is prone to errors, clutter, and a lack of privacy. **WaitRx** was built to solve this problem.
+For too long, pharmacy teams have relied on handwritten scraps of paper, sticky notes, and chaotic faxes to manage their most critical tasks. This system is prone to errors, clutter, and a lack of privacy. **CounterFlow Mini** was built to solve this.
 
-WaitRx is a simple, powerful, and completely private digital Kanban board for your pharmacy's waiting prescriptions. It's designed to be intuitive for the entire team, from technicians to pharmacists, providing a clear, real-time view of the waiter queue without needing an internet connection.
+CounterFlow Mini is a simple, powerful, and completely private digital workflow manager for your pharmacy. It provides a clear, real-time view of your queues without needing an internet connection. It now includes three main modules:
 
-**The core principle of WaitRx is security and privacy.** All data is stored locally in your browser and is **permanently deleted** when the page is closed. Nothing is ever sent to a server.
+* **WaitRx:** The original digital Kanban board for managing the priority fill queue.
+* **ProblemRx:** A to-do list for tracking and managing script-related and task-based problems.
+* **TransfersRx:** A brand new module to digitize, log, and manage incoming and outgoing prescription transfers.
 
-## **🚀 Installation & Usage**
+## 🔒 Security, Privacy, and Data Persistence
 
-Getting started with WaitRx is incredibly simple. No installation is required.
+The core principle of CounterFlow Mini is security. The application is designed to be HIPAA-compliant by default by leaving no data behind. You have the option to enable a secure, temporary autosave feature to recover from browser crashes.
 
-1. Go to the [**Latest Release**](https://github.com/ARKVAULT-HEALTH/waitrx/releases) page.  
-2. Under the "Assets" section, download the WaitRx.html file.  
-3. Open the file in any modern web browser (like Chrome, Firefox, Edge, or Safari).
+### Two Modes of Operation
 
-That's it\! You can now use the application completely offline. You can save the WaitRx.html file to your desktop or a shared folder for easy access.
+1.  **In-Memory Mode (Default):**
+    * By default, all queue data exists **only in your browser's active memory**.
+    * It is **not** written to your hard drive or any temporary files.
+    * When you close the browser tab, the memory is cleared, and all data is **instantly and permanently gone**. This is the most secure mode.
+2.  **Encrypted Local Autosave (Opt-In):**
+    * You can enable this feature in the **Settings** menu to protect against accidental browser crashes or reloads.
+    * When enabled, your queue data is automatically saved to your browser's localStorage after every change.
+    * This data is set to **automatically expire** after a duration you choose (from 1 to 72 hours). After expiration, the data is deleted upon the next page load.
 
-## **🔁 The WaitRx Workflow Logic**
+### Encryption Standard: AES-256-GCM
 
-WaitRx is designed to be flexible and adapt to your team's specific workflow. Here’s the core logic behind each queue:
+When Local Autosave is enabled, your data is not stored in plain text. It is encrypted using **AES-256-GCM (Galois/Counter Mode)**.
 
-### **1\. Waiting for Review**
+* **AES-256:** This is the Advanced Encryption Standard with a 256-bit key, the same level of encryption used by the U.S. government to protect top-secret information. It is considered quantum-resistant and cannot be broken by brute force.
+* **GCM (Authenticated Encryption):** This mode not only encrypts your data but also creates a secure signature (a tag) to verify that the data has not been tampered with or corrupted. If even a single character of the saved data is changed, it will fail decryption, protecting its integrity.
 
-* **Purpose:** This is the starting point. Any technician can add a patient's name to this list to get it on the pharmacist's radar.  
-* **Action:** A **Pharmacist** reviews the prescription in the main pharmacy system to ensure it's clinically appropriate and ready for the next step. Once verified, they advance the script in WaitRx.
+The encryption key is generated securely by your browser and is also stored in localStorage, separate from the data. It never leaves your machine.
 
-### **2\. Ready to Print**
+### Verifying the Encryption
 
-* **Purpose:** This queue acts as a holding area for scripts that have been pharmacist-reviewed but not yet printed for the filling techs.  
-* **Action (Standard Workflow):** Once enough scripts accumulate (based on your team's preference set in Settings), a tech clicks the **Print** button. This generates a clean, paper list for the filling technicians. All printed scripts automatically move to the next queue.  
-* **Action (Tablet/Paperless Workflow):** In "Tablet Mode," this queue is hidden. The "Reviewed" action sends scripts directly to the final queue.
+To provide full transparency, you can prove that the autosave feature is working as described:
 
-### **3\. Printed and Waiting to be Filled**
+1.  Enable "Local Autosave" in the Settings menu.
+2.  Add an item to any queue.
+3.  In Settings, click the **"View Raw Encrypted Data"** button.
+4.  A window will appear showing the garbled, unreadable text exactly as it is stored in your browser. This demonstrates that your data is not being saved in plain text.
 
-* **Purpose:** This is the final active queue. It contains all prescriptions that are currently being filled by technicians or are physically ready for the patient.  
-* **Action:** *Anyone* on the team (the filling tech, the front-end tech, or the pharmacist) can select the prescription and click **"Mark as Completed"** to clear it from the board, keeping the list clean and up-to-date.
+## 🚀 Installation & Usage
 
-## **⚙️ Customization**
+Getting started with CounterFlow Mini is incredibly simple. No installation is required.
 
-You can tailor WaitRx to your exact needs using the **Settings** menu (the gear icon):
+1.  Go to the [**Latest Release**](https://github.com/ARKVAULT-HEALTH/CounterFlow/releases) page.
+2.  Under the "Assets" section, download the `CounterFlowMini.html` file.
+3.  Open the file in any modern web browser (like Chrome, Firefox, Edge, or Safari).
 
-* **Layout/Interaction:**  
-  * **Cards \- Direct:** The fastest mode. Every card has its own action buttons.  
-  * **Cards \- Select:** A cleaner view. Click any card to select it, then use the central Action Bar that appears.  
-  * **Desktop:** A high-density data grid view, perfect for dedicated terminals.  
-* **Visual Style:**  
-  * **Modern:** The default, clean interface.  
-  * **Classic:** A retro look with GroupBox-style sections.  
-  * **Classic \- Windows XP:** A special version of the Classic style with authentic beveled, gray headers on the data grid for a true retro software feel.  
-  * **Terminal:** A green-screen-like, monospaced layout for the nostalgic.  
-* **Theme:**  
-  * Change the color palette of the application.  
-* **Tablet Mode:** A Paperless Workflow  
-  * For teams using tablets or who prefer a fully digital process, **Tablet Mode** streamlines the workflow by removing the print step entirely. You can enable it in the **Settings** menu. When active:  
-    * The **"Print"** and **"Print Preview"** buttons are hidden.  
-    * The **"Ready to Print"** queue is removed from the main view.  
-    * When a pharmacist marks a script as **"Reviewed"**, it now moves directly to the **"Printed and Waiting to be Filled"** queue, allowing the filling technician to work directly from their screen without paper.
+That's it! You can now use the application completely offline. You can save the `.html` file to your desktop or a shared folder for easy access.
 
-## **🤝 Contributing**
+## 🔁 The Workflow Logic
 
-This is a project for the pharmacy community, by the pharmacy community. Your feedback and contributions are welcome\!
+CounterFlow Mini is designed to be flexible and adapt to your team's specific workflow. Use the tabs at the top to switch between modules.
 
-* **Found a bug or have an idea?** Please [open an issue](https://github.com/ARKVAULT-HEALTH/waitrx/issues) and describe it in as much detail as possible.  
+### WaitRx Module (The Prescription Queue)
+
+This is the core queue for managing waiting prescriptions.
+
+1.  **Waiting for Review:** The starting point. Any technician can add a patient's name and script count to this list.
+2.  **Ready to Print:** A holding area for pharmacist-reviewed scripts. Once enough scripts accumulate, a tech clicks the **Print Waiters** button to generate a paper list for the filling technicians.
+3.  **Waiting to be Filled:** After printing, scripts automatically move here. This is the final active queue for items being filled.
+4.  **Completed:** Anyone on the team can mark a script as completed to clear it from the board.
+
+### ProblemRx Module (The To-Do List)
+
+This module is for tracking issues that need resolution.
+
+* **To Do:** The initial queue for new problems.
+* **Follow-up:** For problems that have been partially addressed but require further action.
+
+### TransfersRx Module (The Transfer Log)
+
+This new module digitizes the chaotic process of managing prescription transfers.
+
+* **Incoming Transfers:** Quickly generate professional, formatted fax requests to send to other pharmacies. No more handwritten faxes!
+* **Outgoing Transfers:** Create a clear, timestamped log of transfers you give out over the phone, ensuring you have a record of what was transferred, to whom, and when.
+* **Pharmacy Directory:** Manage a central list of competitor pharmacies, including their contact info, logos, and staff pharmacists, to make creating faxes and logs faster than ever.
+
+## ⚙️ Customization
+
+You can tailor CounterFlow Mini to your exact needs using the **Settings** menu (the gear icon), including Layout/Interaction modes, Visual Styles, and Print Options.
+
+## 🤝 Contributing
+
+This is a project for the pharmacy community, by the pharmacy community. Your feedback and contributions are welcome!
+
+* **Found a bug or have an idea?** Please [open an issue](https://github.com/ARKVAULT-HEALTH/CounterFlow/issues) and describe it in as much detail as possible.
 * **Want to add a feature?** Fork the repository, make your changes, and submit a pull request.
 
-## **📜 License**
+## 📜 License
 
-WaitRx is free software licensed under the **GNU Affero General Public License v3.0**. This means you are free to use, modify, and distribute the software. However, if you create a modified version and make it available to others (even over a network), you must also make your source code available under the same license.
-
-You can read the full license text [here](https://www.gnu.org/licenses/agpl-3.0.html).
+CounterFlow Mini is free software licensed under the **GNU Affero General Public License v3.0**. You can read the full license text [here](https://www.gnu.org/licenses/agpl-3.0.html).
